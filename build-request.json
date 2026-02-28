@@ -1,0 +1,90 @@
+{
+  "kind": "build_request",
+  "title": "Add Image Sharing and Emoji Support to Chat",
+  "projectName": "ChatFlow",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-14",
+      "text": "Extend the backend message data model to support an optional image payload alongside text. Add a backend function to send a message with an image (stored as a blob or base64-encoded data URL). Update message retrieval to return image data so the frontend can render it.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "image sharing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The message type includes an optional image field (e.g., ?Blob or ?Text for base64 data URL).",
+        "A sendImageMessage (or updated sendMessage) backend function accepts image data and stores it alongside the sender ID, conversation ID, and timestamp.",
+        "getMessages returns image data for messages that contain images.",
+        "Text-only messages continue to work without any image field required."
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Add an image attachment button in the MessageInput component. Clicking it opens a native file picker filtered to image types (PNG, JPG, GIF, WebP). The selected image is previewed as a thumbnail above the input bar before sending. On send, the image is uploaded to the backend and displayed as a chat bubble containing the image.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "image sharing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A paperclip or image icon button appears in the message input bar.",
+        "Clicking it triggers a file input that accepts image/* files only.",
+        "A thumbnail preview of the selected image is shown above the input bar before sending.",
+        "The user can cancel the image selection and return to normal text input.",
+        "Pressing send submits the image (as base64 data URL) to the backend.",
+        "Sent image messages appear as image bubbles in the chat view, aligned to the right with the sender's style.",
+        "Received image messages appear as image bubbles aligned to the left.",
+        "Images are constrained to a max width/height and are tap/click-expandable to full size."
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Add an emoji picker button to the MessageInput component. Clicking it opens a compact emoji picker panel above the input bar. Selecting an emoji inserts it at the current cursor position in the text input. The picker should include common emoji categories and a search field.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "emoji support"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A smiley face icon button appears in the message input bar.",
+        "Clicking it toggles a compact emoji picker panel positioned above the input bar.",
+        "The picker displays emojis organized by common categories (smileys, gestures, objects, etc.).",
+        "The picker includes a search/filter input for finding emojis by name.",
+        "Selecting an emoji inserts it at the current cursor position in the text input field.",
+        "The picker closes after an emoji is selected or when the user clicks outside it.",
+        "Sent messages containing emoji render correctly in chat bubbles for both sender and receiver.",
+        "The emoji picker styling is consistent with the app's dark sidebar / teal-accent visual theme."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not break existing text-only messaging functionality.",
+    "Images must be stored in the backend canister (as base64 or Blob); do not use external storage services.",
+    "Do not edit any files listed in frontend.immutablePaths.",
+    "Keep all Motoko logic in backend/main.mo (single-actor architecture)."
+  ],
+  "nonGoals": [
+    "Video sharing or audio/voice messages.",
+    "File/document sharing (beyond images).",
+    "Real-time push notifications for new messages.",
+    "Group chat functionality.",
+    "Link previews or webpage embeds."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

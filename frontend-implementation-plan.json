@@ -1,0 +1,79 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Image Sharing and Emoji Support to Chat",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "summary": "Add image attachment capability to MessageInput with preview and rendering in chat bubbles",
+      "acceptanceCriteria": [
+        "A paperclip or image icon button appears in the message input bar.",
+        "Clicking it triggers a file input that accepts image/* files only.",
+        "A thumbnail preview of the selected image is shown above the input bar before sending.",
+        "The user can cancel the image selection and return to normal text input.",
+        "Pressing send submits the image (as base64 data URL) to the backend.",
+        "Sent image messages appear as image bubbles in the chat view, aligned to the right with the sender's style.",
+        "Received image messages appear as image bubbles aligned to the left.",
+        "Images are constrained to a max width/height and are tap/click-expandable to full size."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MessageInput.tsx",
+          "operation": "modify",
+          "description": "Add image attachment button with file picker accepting image/* types. Display thumbnail preview of selected image above input bar with cancel option. On send, convert selected image to base64 data URL and call sendImageMessage backend function with conversationId, text content, and image blob. Clear image selection after successful send. Show loading state during image upload."
+        },
+        {
+          "path": "frontend/src/components/ChatView.tsx",
+          "operation": "modify",
+          "description": "Extend message rendering to display image bubbles when message contains image data. Render images constrained to max-width/max-height (e.g., 300px) with rounded corners matching text bubble styling. Apply sender alignment (right) and receiver alignment (left) to image bubbles. Add click handler to expand images to full size in a modal or lightbox overlay. Ensure images load from base64 data URLs or blob data returned by backend."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add useSendImageMessage mutation hook that calls actor.sendImageMessage with conversationId, content text, and Uint8Array image blob. Invalidate messages query on success to refresh chat view with new image message. Handle file-to-Uint8Array conversion helper if needed for the mutation."
+        },
+        {
+          "path": "frontend/src/components/ImagePreview.tsx",
+          "operation": "create",
+          "description": "Create reusable ImagePreview component that displays a thumbnail of the selected image with file name and size. Include a close/cancel button to clear the selection. Accept image file and onClear callback as props. Style consistently with app's dark sidebar and teal accent theme."
+        },
+        {
+          "path": "frontend/src/components/ImageModal.tsx",
+          "operation": "create",
+          "description": "Create ImageModal component for full-size image viewing. Display clicked image in centered overlay with dark backdrop. Include close button and click-outside-to-close behavior. Ensure image scales responsively and doesn't exceed viewport dimensions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Add emoji picker to MessageInput for inserting emojis at cursor position",
+      "acceptanceCriteria": [
+        "A smiley face icon button appears in the message input bar.",
+        "Clicking it toggles a compact emoji picker panel positioned above the input bar.",
+        "The picker displays emojis organized by common categories (smileys, gestures, objects, etc.).",
+        "The picker includes a search/filter input for finding emojis by name.",
+        "Selecting an emoji inserts it at the current cursor position in the text input field.",
+        "The picker closes after an emoji is selected or when the user clicks outside it.",
+        "Sent messages containing emoji render correctly in chat bubbles for both sender and receiver.",
+        "The emoji picker styling is consistent with the app's dark sidebar / teal-accent visual theme."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MessageInput.tsx",
+          "operation": "modify",
+          "description": "Add emoji picker toggle button (smiley face icon) next to image attachment button. Track emoji picker open/close state. Track textarea cursor position. When emoji is selected, insert it at current cursor position in the text input and restore focus. Close picker after emoji selection or outside click. Position EmojiPicker component above the input bar."
+        },
+        {
+          "path": "frontend/src/components/EmojiPicker.tsx",
+          "operation": "create",
+          "description": "Create EmojiPicker component displaying emojis organized by categories (smileys, gestures, animals, food, activities, travel, objects, symbols, flags). Include search/filter input at top to find emojis by name or keyword. Use a compact grid layout with category tabs or sections. Accept onEmojiSelect callback that receives selected emoji string. Style with dark background and teal accent highlights matching app theme. Support click-outside-to-close via parent component."
+        },
+        {
+          "path": "frontend/src/utils/emojiData.ts",
+          "operation": "create",
+          "description": "Export emoji data structure organized by category with emoji character, name, and optional keywords for search. Include common categories: smileys & people, gestures, animals & nature, food & drink, activities, travel & places, objects, symbols, flags. Keep dataset compact (top 200-300 most common emojis) to reduce bundle size."
+        }
+      ]
+    }
+  ]
+}

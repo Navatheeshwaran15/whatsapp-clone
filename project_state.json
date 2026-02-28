@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 11,
+  "summary": "A WhatsApp-like messaging app with real-time chat functionality. PWA (Progressive Web App) support is being added so users can install it on their home screen from Android/iOS browsers.",
+  "architectural_notes": [
+    "Messaging app inspired by WhatsApp — focus on real-time chat UX"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-build-a-contacts-user-list-panel-on-the-left-side-of-the-app-display-all-registered-users-with-their-avatar-initials-based-placeholder-username-and-last-message-preview-highlight-the-currently-active-conversation",
+      "title": "Build a contacts/user list panel on the left side of the app. Display all registered users with their avatar (initials-based placeholder), username, and last message preview. Highlight the currently active conversation.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-main-chat-conversation-view-that-displays-messages-as-chat-bubbles-sent-messages-appear-on-the-right-in-a-distinct-color-received-messages-appear-on-the-left-each-bubble-shows-the-message-text-and-a-formatted-timestamp",
+      "title": "Build a main chat conversation view that displays messages as chat bubbles. Sent messages appear on the right in a distinct color; received messages appear on the left. Each bubble shows the message text and a formatted timestamp.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-message-input-bar-at-the-bottom-of-the-chat-view-with-a-text-field-and-a-send-button-submitting-the-form-enter-key-or-send-button-calls-the-backend-to-store-and-display-the-new-message",
+      "title": "Add a message input bar at the bottom of the chat view with a text field and a send button. Submitting the form (Enter key or send button) calls the backend to store and display the new message.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-an-online-offline-status-indicator-next-to-each-user-in-the-contacts-panel-and-in-the-chat-header-users-who-have-been-active-recently-are-shown-as-online-green-dot-others-as-offline-grey-dot",
+      "title": "Display an online/offline status indicator next to each user in the contacts panel and in the chat header. Users who have been active recently are shown as online (green dot); others as offline (grey dot).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-clean-modern-messaging-app-visual-theme-use-a-dark-sidebar-with-teal-green-accent-colors-for-sent-message-bubbles-inspired-by-whatsapp-s-signature-palette-a-light-main-chat-area-rounded-chat-bubbles-and-clear-typographic-hierarchy-enforce-the-style-consistently-across-all-views",
+      "title": "Apply a clean, modern messaging-app visual theme. Use a dark sidebar with teal/green accent colors for sent message bubbles (inspired by WhatsApp's signature palette), a light main chat area, rounded chat bubbles, and clear typographic hierarchy. Enforce the style consistently across all views.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-top-header-bar-in-the-chat-view-showing-the-recipient-s-avatar-username-and-online-status-include-a-search-icon-as-a-placeholder-for-future-search-functionality",
+      "title": "Add a top header bar in the chat view showing the recipient's avatar, username, and online status. Include a search icon as a placeholder for future search functionality.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-internet-identity-authentication-so-users-can-securely-log-in-and-log-out-of-the-app-the-login-page-should-present-a-login-with-internet-identity-button-that-triggers-the-ii-authentication-flow-after-successful-authentication-the-user-should-be-directed-to-the-main-messaging-layout-or-profile-setup-if-first-time-unauthenticated-users-should-only-see-the-login-page",
+      "title": "Integrate Internet Identity authentication so users can securely log in and log out of the app. The login page should present a 'Login with Internet Identity' button that triggers the II authentication flow. After successful authentication, the user should be directed to the main messaging layout (or profile setup if first time). Unauthenticated users should only see the login page.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-web-app-manifest-file-frontend-public-manifest-json-for-the-chatflow-app-with-the-app-name-short-name-description-start-url-display-mode-set-to-standalone-background-color-and-theme-color-matching-the-app-s-teal-green-whatsapp-inspired-palette-and-icon-references-for-192x192-and-512x512-sizes-stored-in-frontend-public-assets-generated",
+      "title": "Create a Web App Manifest file (frontend/public/manifest.json) for the ChatFlow app with the app name, short name, description, start URL, display mode set to 'standalone', background color and theme color matching the app's teal/green WhatsApp-inspired palette, and icon references for 192x192 and 512x512 sizes stored in frontend/public/assets/generated/.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-register-a-service-worker-frontend-public-sw-js-that-caches-the-app-shell-html-css-js-manifest-and-icons-using-a-cache-first-strategy-so-the-app-loads-offline-after-the-first-visit",
+      "title": "Register a service worker (frontend/public/sw.js) that caches the app shell (HTML, CSS, JS, manifest, and icons) using a cache-first strategy so the app loads offline after the first visit.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-index-html-to-link-the-web-app-manifest-link-rel-manifest-set-the-theme-color-meta-tag-to-the-app-s-teal-accent-color-add-apple-touch-icon-meta-tags-pointing-to-the-192x192-icon-and-include-apple-mobile-web-app-capable-and-apple-mobile-web-app-status-bar-style-meta-tags-for-ios-home-screen-installation-support",
+      "title": "Update frontend/index.html to link the web app manifest (<link rel='manifest'>), set the theme-color meta tag to the app's teal accent color, add apple-touch-icon meta tags pointing to the 192x192 icon, and include apple-mobile-web-app-capable and apple-mobile-web-app-status-bar-style meta tags for iOS home screen installation support.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-place-pwa-icon-images-at-frontend-public-assets-generated-a-192x192-icon-pwa-icon-192-png-and-a-512x512-icon-pwa-icon-512-png-both-should-use-the-chatflow-logo-mark-a-modern-minimal-chat-bubble-icon-with-teal-green-colors-on-a-dark-background-consistent-with-the-app-s-whatsapp-inspired-palette",
+      "title": "Generate and place PWA icon images at frontend/public/assets/generated/: a 192x192 icon (pwa-icon-192.png) and a 512x512 icon (pwa-icon-512.png). Both should use the ChatFlow logo mark — a modern minimal chat bubble icon with teal/green colors on a dark background, consistent with the app's WhatsApp-inspired palette.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-image-attachment-button-in-the-messageinput-component-clicking-it-opens-a-native-file-picker-filtered-to-image-types-png-jpg-gif-webp-the-selected-image-is-previewed-as-a-thumbnail-above-the-input-bar-before-sending-on-send-the-image-is-uploaded-to-the-backend-and-displayed-as-a-chat-bubble-containing-the-image",
+      "title": "Add an image attachment button in the MessageInput component. Clicking it opens a native file picker filtered to image types (PNG, JPG, GIF, WebP). The selected image is previewed as a thumbnail above the input bar before sending. On send, the image is uploaded to the backend and displayed as a chat bubble containing the image.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-emoji-picker-button-to-the-messageinput-component-clicking-it-opens-a-compact-emoji-picker-panel-above-the-input-bar-selecting-an-emoji-inserts-it-at-the-current-cursor-position-in-the-text-input-the-picker-should-include-common-emoji-categories-and-a-search-field",
+      "title": "Add an emoji picker button to the MessageInput component. Clicking it opens a compact emoji picker panel above the input bar. Selecting an emoji inserts it at the current cursor position in the text input. The picker should include common emoji categories and a search field.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Real-time messaging between users",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Contact list and user profiles",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Chat conversations UI (bubbles, timestamps)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Media sharing (images, files)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Online/offline status indicators",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Create a backend actor that manages users, conversations, and messages. Support registering a user profile (username, avatar placeholder, status), storing conversations between users, and persisting chat messages with sender ID, text content, and timestamp.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "User authentication with Internet Identity for secure login",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add a logo to the app (branding/visual identity)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Generate a ChatFlow app logo and display it on the login page above the app name. The logo should be a modern, minimal chat/messaging icon using teal/green accent colors consistent with the app's WhatsApp-inspired palette.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Add PWA (Progressive Web App) support with manifest, service worker, and splash screen so users can install the app on Android/iOS home screens",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Image sharing in chat — allow users to send and receive images in conversations",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Emoji support in message input — allow users to insert and send emoji in chat messages",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Extend the backend message data model to support an optional image payload alongside text. Add a backend function to send a message with an image (stored as a blob or base64-encoded data URL). Update message retrieval to return image data so the frontend can render it.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "WhatsApp Clone",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

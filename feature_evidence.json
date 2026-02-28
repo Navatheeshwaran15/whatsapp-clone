@@ -1,0 +1,49 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-an-image-attachment-button-in-the-messageinput-component-clicking-it-opens-a-native-file-picker-filtered-to-image-types-png-jpg-gif-webp-the-selected-image-is-previewed-as-a-thumbnail-above-the-input-bar-before-sending-on-send-the-image-is-uploaded-to-the-backend-and-displayed-as-a-chat-bubble-containing-the-image",
+      "featureTitle": "Add an image attachment button in the MessageInput component. Clicking it opens a native file picker filtered to image types (PNG, JPG, GIF, WebP). The selected image is previewed as a thumbnail above the input bar before sending. On send, the image is uploaded to the backend and displayed as a chat bubble containing the image.",
+      "files": [
+        "frontend/src/components/ChatView.tsx",
+        "frontend/src/components/ImageModal.tsx",
+        "frontend/src/components/ImagePreview.tsx",
+        "frontend/src/components/MessageInput.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-emoji-picker-button-to-the-messageinput-component-clicking-it-opens-a-compact-emoji-picker-panel-above-the-input-bar-selecting-an-emoji-inserts-it-at-the-current-cursor-position-in-the-text-input-the-picker-should-include-common-emoji-categories-and-a-search-field",
+      "featureTitle": "Add an emoji picker button to the MessageInput component. Clicking it opens a compact emoji picker panel above the input bar. Selecting an emoji inserts it at the current cursor position in the text input. The picker should include common emoji categories and a search field.",
+      "files": [
+        "frontend/src/components/EmojiPicker.tsx",
+        "frontend/src/components/MessageInput.tsx",
+        "frontend/src/utils/emojiData.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

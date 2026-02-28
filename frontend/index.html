@@ -1,0 +1,44 @@
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <title>ChatFlow — Messaging App</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="/manifest.json" />
+
+        <!-- Theme color for browser chrome -->
+        <meta name="theme-color" content="#14b8a6" />
+
+        <!-- iOS PWA support -->
+        <link rel="apple-touch-icon" href="/assets/generated/pwa-icon-192.dim_192x192.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="ChatFlow" />
+
+        <!-- General PWA meta -->
+        <meta name="description" content="WhatsApp-inspired real-time messaging app" />
+        <meta name="mobile-web-app-capable" content="yes" />
+    </head>
+    <body>
+        <div id='root'></div>
+        <script type='module' src='/src/main.tsx'></script>
+
+        <!-- Service Worker Registration -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then(function (registration) {
+                            console.log('ServiceWorker registered:', registration.scope);
+                        })
+                        .catch(function (error) {
+                            console.log('ServiceWorker registration failed:', error);
+                        });
+                });
+            }
+        </script>
+    </body>
+</html>

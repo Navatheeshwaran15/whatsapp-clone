@@ -1,0 +1,22 @@
+{
+  "frontend/src/index.css": "Global styles with WhatsApp-inspired OKLCH color system, custom CSS variables for sidebar dark theme, teal/green chat bubbles, and Inter font import.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Inter font family, chat-specific color tokens (chat-sent, chat-received, sidebar-dark, online/offline), and fade-in animation.",
+  "frontend/src/hooks/useQueries.ts": "All React Query hooks for user profiles, online status, messaging, and conversations; now includes useSendImageMessage mutation that converts a File to Uint8Array and calls actor.sendImageMessage.",
+  "frontend/src/components/StatusIndicator.tsx": "Small colored dot component showing green for online and grey for offline users, with configurable size.",
+  "frontend/src/components/LoginPage.tsx": "Full-screen login page with ChatFlow branding, feature highlights, and Internet Identity login button.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Modal dialog for first-time users to enter their username and status. Now uses `useRegisterUser` (instead of `saveCallerUserProfile`) so guests can register and obtain the `#user` role in one step, with error display.",
+  "frontend/src/components/UserAvatar.tsx": "Initials-based avatar component with deterministic color assignment from username hash, supporting xs/sm/md/lg sizes.",
+  "frontend/src/components/ContactsList.tsx": "Dark sidebar panel listing all users with avatars, online status indicators, search filtering, and active conversation highlighting.",
+  "frontend/src/components/ChatHeader.tsx": "Sticky chat header showing recipient avatar, name, online status, and action buttons (search, call placeholders, more options).",
+  "frontend/src/components/MessageInput.tsx": "Bottom input bar with emoji picker toggle (smiley icon), image attachment button (ImagePlus icon), image preview strip, text field with cursor-aware emoji insertion, and send button with loading state.",
+  "frontend/src/components/ChatView.tsx": "Main chat area rendering text and image message bubbles with date grouping, auto-scroll, and a full-size ImageModal triggered by clicking any image bubble; LocalMessage type now includes an optional imageUrl field.",
+  "frontend/src/components/MessagingLayout.tsx": "Two-column layout composing ContactsList and ChatView, managing active conversation state and logout functionality.",
+  "frontend/src/App.tsx": "Root app component orchestrating the auth flow: loading → login → profile setup → messaging layout, with a reusable `LoadingScreen` component and proper flash prevention logic.",
+  "frontend/index.html": "HTML entry point for ChatFlow with PWA support — includes manifest link, theme-color meta tag, iOS-specific PWA meta tags (apple-touch-icon, apple-mobile-web-app-capable, status-bar-style), and a service worker registration script before the closing body tag.",
+  "frontend/public/manifest.json": "Web App Manifest for ChatFlow PWA with name, short_name, description, standalone display mode, teal theme color (#14b8a6), dark background color, and icon references to the 192×192 and 512×512 generated PNG icons.",
+  "frontend/public/sw.js": "Service worker for ChatFlow that caches the app shell on install using a cache-first strategy, cleans up old caches on activate, and excludes all ICP/Internet Identity API requests from caching to preserve authentication flows.",
+  "frontend/src/utils/emojiData.ts": "Emoji data module exporting ~300 emojis organized into 8 categories (smileys, gestures, hearts, animals, food, activities, travel, objects, symbols) with name and keyword metadata for search.",
+  "frontend/src/components/EmojiPicker.tsx": "Compact emoji picker panel with category tabs, search/filter input, and an 8-column emoji grid; closes on outside click and calls onEmojiSelect with the chosen emoji character.",
+  "frontend/src/components/ImagePreview.tsx": "Thumbnail preview strip shown above the message input when an image is selected, displaying the image, filename, file size, and a cancel/clear button.",
+  "frontend/src/components/ImageModal.tsx": "Full-screen lightbox overlay for viewing a shared image at full size, with keyboard (Escape) and click-outside dismissal, plus a download button."
+}
